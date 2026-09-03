@@ -1,0 +1,211 @@
+<?php
+    $stmt = mysqli_query($conn, "SELECT * FROM products");
+
+    $category_query = mysqli_query($conn, "SELECT * FROM categories");
+    $category_count = mysqli_num_rows($category_query);
+
+    echo "<pre class='col-md-4 col-md-offset-4' style='margin-top: 12%;'>";
+    print_r($_POST);
+    echo "</pre>";
+?>
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div style="margin-bottom: 16px;" class="col-lg-12">
+                <h1 class="page-header">List Produk</h1>
+                <a style="font-size: 16px;" href="?page=home"><span class="glyphicon glyphicon-circle-arrow-left"></span>&nbsp;&nbsp;Kembali</a>
+            </div>
+            <!-- /.col-lg-12 -->
+            <div class="col-lg-12">
+            	<div class="panel panel-default">
+            		<div class="panel-heading">
+            			<button class="btn btn-primary" data-toggle="modal" id="btnAddProd"><span class="fa fa-plus"></span>&nbsp;&nbsp;Add New</button>
+            		</div>
+            		<div class="panel-body">
+            			<div class="table-responsive">
+
+            				<table class="table table-bordered <?php if(mysqli_num_rows($stmt) != 0) { echo 'table-striped table-hover'; }?>">
+            					<thead>
+            						<tr>
+            							<th>No</th>
+            							<th>Kode Prod</th>
+            							<th>Produk</th>
+            							<th>Kategori</th>
+            							<th>Unit</th>
+            							<th>Harga Jual</th>
+            							<th>Stok</th>
+                                        <th>Gambar</th>
+            							<th>Aksi</th>
+            						</tr>
+            					</thead>
+            					<tbody>
+                                    <?php if(mysqli_num_rows($stmt) == 0) { ?>
+
+                                    <tr>
+                                        <td colspan="9" style="vertical-align: middle;">
+                                            <div class="alert alert-warning text-center" style="margin-bottom: 0;"><strong class="text-capitalize">data produk masih kosong!</strong></div>
+                                        </td>
+                                    </tr>
+
+                                     <?php } else { ?>
+
+                                    <?php
+                                        $no = 1;
+                                        while($row = mysqli_fetch_assoc($stmt)) {
+                                            $prod_id = isset($row['id']) ? $row['id'] : '';
+                                            $prod_code = isset($row['prod_code']) ? $row['prod_code'] : '';
+                                            $prod_name = isset($row['name']) ? $row['name'] : '';
+                                            $category = isset($row['category']) ? $row['category'] : (isset($row['category_name']) ? $row['category_name'] : (isset($row['category_id']) ? $row['category_id'] : ''));
+                                            $unit = isset($row['unit']) ? $row['unit'] : '';
+                                            $selling_price = isset($row['selling_price']) ? $row['selling_price'] : 0;
+                                            $stok = isset($row['qty']) ? $row['qty'] : '';
+                                    ?>
+
+                                    <tr>
+                                        <td><?= $no++; ?></td>
+                                        <td><?= htmlspecialchars($prod_code); ?></td>
+                                        <td><?= htmlspecialchars($prod_name); ?></td>
+                                        <td><?= htmlspecialchars($category); ?></td>
+                                        <td><?= htmlspecialchars($unit); ?></td>
+                                        <td>Rp <?= number_format($selling_price, 0, ',', '.'); ?></td>
+                                        <td><?= htmlspecialchars($stok); ?></td>
+                                        <td>-</td>
+                                        <td>
+                                            <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#viewProd<?php echo $prod_id; ?>" title="View">
+                                                <span class="glyphicon glyphicon-eye-open"></span>
+                                            </button>
+                                            <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#editProd<?php echo $prod_id; ?>" title="Edit">
+                                                <span class="glyphicon glyphicon-edit"></span>
+                                            </button>
+                                            <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteProd<?php echo $prod_id; ?>" title="Delete">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <?php } ?>
+
+                                     <?php } ?>
+            					</tbody>
+            				</table>
+            			</div>
+            		</div>
+            	</div>
+            </div>
+        </div>
+        
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->
+
+<?php
+    include_once "./process/products/get_prodcode_dat.php";
+    include_once "./process/products/upload_file_img.php";
+?>
+
+<!-- modal warning kategori -->
+<div class="modal fade" id="categoryWarning" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header bg-warning text-warning" style="border-top-left-radius: 6px; border-top-right-radius: 6px;">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+
+                <h4 class="modal-title">
+                    <strong>Perhatian</strong>
+                </h4>
+            </div>
+
+            <div class="modal-body">
+                <p>
+                    Sebelum menambahkan produk, silakan tambahkan
+                    data kategori terlebih dahulu.
+                </p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button"
+                        class="btn btn-default"
+                        data-dismiss="modal">
+                    Tutup
+                </button>
+
+                <a href="?page=categories" class="btn btn-warning">
+                    Kelola Kategori
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- modal form tambah data -->
+<div class="modal fade" tabindex="-1" role="dialog" id="addProd">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"><strong>Tambah Produk</strong></h4>
+      </div>
+      <div class="modal-body">
+        <form id="formProd" action="" method="POST">
+            <fieldset>
+                <div class="form-group" style="padding-left: 0; width: 30%;">
+                    <label for="code_prod">Kode Produk</label>
+                    <input type="text" name="code_prod" class="form-control" id="code_prod"  value="<?= $product_code ?>">
+                </div>
+                <div class="form-group">
+                    <label for="prod_name">Nama Produk</label>
+                    <input type="text" name="prod_name" class="form-control" id="prod_name" autofocus>
+                </div>
+                <div class="form-group">
+                    <label>Kategori</label>
+                    <select name="category" id="" class="form-control">
+                        <option value="">-- Pilih Kategori --</option>
+                        <?php while($category = mysqli_fetch_assoc($category_query)) { ?>
+                        
+                        <option value="<?= $category['id']; ?>"> <?= htmlspecialchars($category['name']); ?> </option>
+                        
+                        <?php } ?>
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="stok">Stok</label>
+                        <input name="stok" type="number" class="form-control" id="stok">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="satuan">Satuan</label>
+                        <input name="satuan" type="text" class="form-control" id="satuan">
+                    </div>
+                    <div class="col-md-offset-4"></div>
+                </div>
+                <div class="form-group">
+                    <label for="selling_price">Harga Jual</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><strong>Rp.</strong></div>
+                        <input name="selling_price" type="number" class="form-control" id="selling_price">
+                    </div>
+                    <span class="help-block">*Harga jual untuk satuan barang</span>
+                </div>
+                <div class="form-group">
+                    <label for="">Gambar Produk</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-file-image-o"></i></div>
+                        <input type="file" class="form-control" name="img_prod" accept="image/jpeg,image/png">
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" name="add_product" form="formProd">Submit</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

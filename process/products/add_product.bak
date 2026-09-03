@@ -1,0 +1,61 @@
+<?php
+
+if(isset($_POST['add_product'])){
+    $code_prod = isset($_POST['code_prod']) ? $_POST['code_prod'] : '';
+    $prod_name = isset($_POST['prod_name']) ? trim($_POST['prod_name']) : '';
+    $category_id = isset($_POST['category_id']) ? intval($_POST['category_id']) : '';
+    $satuan = isset($_POST['satuan']) ? intval($_POST['satuan']) : '';
+    $stok = isset($_POST['stok']) ? intval($_POST['stok']) : '';
+    $selling_price = isset($_POST['selling_price']) ? intval($_POST['selling_price']) : '';
+
+    if($code_prod == ''){
+    	$errors['code_prod'] = "Kode Produk wajib diisi!";
+    }
+
+    if($prod_name == ''){
+    	$errors['prod_name'] = "Nama Produk wajib diisi!";
+    }
+
+    if($category_id == ''){
+    	$errors['category_id'] = "Kategori Produk wajib diisi!";
+    }
+
+    if($satuan == ''){
+    	$errors['satuan'] = "Satuan Produk wajib diisi!";
+    }
+
+    if($stok == ''){
+    	$errors['stok'] = "Stok Produk wajib diisi!";
+    }
+
+    if($selling_price == ''){
+    	$errors['selling_price'] = "Harga Jual Produk wajib diisi!";
+    }
+
+    // untuk gambark produk opsional
+
+    $sql = "INSERT INTO products ( prod_code, name, category_id, selling_price, qty, satuan ) VALUES (?, ?, ?, ?, ?, ?)";
+
+	$stmt = mysqli_prepare($conn, $sql);
+
+	if($stmt == false){
+		die("SQL Error : " . mysqli_error($conn));
+	}
+
+	mysqli_stmt_bind_param($stmt, "ssiisi", $code_prod, $prod_name, $category_id, $selling_price, $stok, $satuan);
+
+	if (mysqli_stmt_execute($stmt)) {
+
+	    header("Location: ?page=products");
+	    exit;
+
+	} else {
+
+	    die("Gagal menambahkan produk " . mysqli_error($conn));
+	}
+
+}
+
+
+
+?>

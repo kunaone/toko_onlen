@@ -1,0 +1,21 @@
+# LoginSys
+
+LoginSys is a simple PHP login system created as a learning project and personal starter pack.
+
+## Background
+
+This project was created to learn and recreate the old-school web development experience, especially the way PHP websites were commonly built around the 2010s.
+
+It intentionally uses older libraries such as **Bootstrap 3** and **Font Awesome 4**.
+
+## Goal
+
+The main goal is to understand the basic authentication flow in PHP, including:
+
+* User registration
+* Login and logout
+* Session handling
+* Form validation
+* MySQL database interaction
+
+This project will also be used as a starting point for future projects that need a simple authentication system.
