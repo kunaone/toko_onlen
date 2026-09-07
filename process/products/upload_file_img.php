@@ -2,9 +2,9 @@
 
 $image_name = null;
 
-if (isset($_FILES['image']) && $_FILES['image']['error'] != UPLOAD_ERR_NO_FILE) {
+if (isset($_FILES['img_prod']) && $_FILES['img_prod']['error'] != UPLOAD_ERR_NO_FILE) {
 
-    $image = $_FILES['image'];
+    $image = $_FILES['img_prod'];
 
     // 2 MB
     $max_size = 2 * 1024 * 1024;
@@ -42,16 +42,13 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] != UPLOAD_ERR_NO_FILE) 
     // prd_003_64a91f.jpg
     $image_name = uniqid('prd_') . '.' . $extension;
 
-    $upload_dir = "../uploads/products/";
+    $upload_dir = __DIR__ . "/../../uploads/products/";
 
     if (!is_dir($upload_dir)) {
-        mkdir($upload_dir, 0755, true);
+        $errors['img_prod'] = "Folder uploads tidak ditemukan";
     }
 
-    if (!move_uploaded_file(
-        $image['tmp_name'],
-        $upload_dir . $image_name
-    )) {
+    if (!move_uploaded_file($image['tmp_name'], $upload_dir . $image_name)) {
         die('Gagal menyimpan gambar.');
     }
 }

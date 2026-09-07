@@ -25,41 +25,42 @@
             						</tr>
             					</thead>
             					<tbody>
-                                    <?php if(mysqli_num_rows($stmt) == 0) { ?>
+  
+                        <?php if(mysqli_num_rows($stmt) == 0) { ?>
 
-                                    <tr>
-                                        <td colspan="8" style="vertical-align: middle;">
-                                            <div class="alert alert-warning text-center" style="margin-bottom: 0;"><strong class="text-capitalize">data kategori masih kosong!</strong></div>
-                                        </td>
-                                    </tr>
+                        <tr>
+                            <td colspan="8" style="vertical-align: middle;">
+                                <div class="alert alert-warning text-center" style="margin-bottom: 0;"><strong class="text-capitalize">data kategori masih kosong!</strong></div>
+                            </td>
+                        </tr>
 
-                                    <?php } else { ?>
+                        <?php } else { ?>
 
-                                        <?php
-                                        $no = 1;
-                                        while($row = mysqli_fetch_assoc($stmt)) {
-                                        ?>
+                            <?php
+                            $no = 1;
+                            while($row = mysqli_fetch_assoc($stmt)) {
+                            ?>
 
-                                        <tr>
-                                            <td><?= $no++ ?></td>
-                                            <td><?= htmlspecialchars($row['name'])?></td>
-                                            <td>
-                                                <button class="btn btn-warning"
-                                                        data-toggle="modal"
-                                                        data-target="#editCategory"
-                                                        data-id="<?= $row['id'] ?>"
-                                                        data-name="<?= htmlspecialchars($row['name']) ?>" ><span class="glyphicon glyphicon-edit"></span></button>
-                                                <button class="btn btn-danger"
-                                                        data-toggle="modal"
-                                                        data-target="#delCategory"
-                                                        data-id="<?= $row['id']?>"
-                                                        data-name="<?= htmlspecialchars($row['name']) ?>"><span class="glyphicon glyphicon-trash"></span></button>
-                                            </td>
-                                        </tr>
+                            <tr>
+                                <td><?= $no++ ?></td>
+                                <td><?= htmlspecialchars($row['name'])?></td>
+                                <td>
+                                    <button class="btn btn-warning"
+                                            data-toggle="modal"
+                                            data-target="#editCategory"
+                                            data-id="<?= $row['id'] ?>"
+                                            data-name="<?= htmlspecialchars($row['name']) ?>" ><span class="glyphicon glyphicon-edit"></span></button>
+                                    <button class="btn btn-danger"
+                                            data-toggle="modal"
+                                            data-target="#delCategory"
+                                            data-id="<?= $row['id']?>"
+                                            data-name="<?= htmlspecialchars($row['name']) ?>"><span class="glyphicon glyphicon-trash"></span></button>
+                                </td>
+                            </tr>
 
-                                        <?php } ?>
+                            <?php } ?>
 
-                                    <?php } ?>
+                        <?php } ?>
 
             					</tbody>
             				</table>
@@ -105,7 +106,6 @@
 </div>
 
 <!-- Edit Modal -->
-
 <div class="modal fade" tabindex="-1" role="dialog" id="editCategory">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -143,7 +143,6 @@
 </div>
 
 <!-- Delete Modal -->
-
 <div class="modal fade" tabindex="-1" role="dialog" id="delCategory">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

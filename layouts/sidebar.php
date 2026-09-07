@@ -1,4 +1,4 @@
-<aside class="sidebar navbar-default" role="navigation">
+<aside class="sidebar mysidebar" role="navigation">
     <div class="sidebar-nav navbar-collapse">
         <ul class="nav" id="side-menu">
            <li class="visible-xs-block" style="height: 55px;"></li>
@@ -20,21 +20,21 @@
                 <a href="?page=home" class="<?= isset($page) && empty($page) ? 'active' : '' ; ?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
             </li>
             <li>
-                <a class="btn btn-link text-muted disabled text-uppercase" style="background-color: #fff; font-size: 11px; letter-spacing: 1px; text-align: left !important;"><strong>Master</strong></a>
+                <a class="btn btn-link text-muted disabled text-uppercase" style="background-color: rgb(19,16,32); font-size: 11px; letter-spacing: 1px; text-align: left !important;"><strong>Master</strong></a>
             </li>
             <!-- second lvl dropdown -->
             <li>
-                <a href="#" class="<?= isset($page) && empty($page) ? 'active' : '' ; ?>"><i class="fa fa-th-large fa-fw"></i>&nbsp;&nbsp;Produk <span class="fa arrow"></span></a>
+                <a href="#" class="<?= isset($page) && empty($page) ? 'active' : '' ; ?>"><i class="fa fa-tags fa-fw"></i>&nbsp;&nbsp;Produk <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li><a class="text-capitalize <?= isset($page) && empty($page) ? 'active' : '' ; ?>" href="?page=products"><i class="fa fa-th-list fa-fw"></i>&nbsp;&nbsp;list product</a></li>
-                    <li><a class="text-capitalize <?= isset($page) && empty($page) ? 'active' : '' ; ?>" href="?page=categories"><i class="fa fa-tags fa-fw"></i>&nbsp;kategori</a></li>
+                    <li><a class="text-capitalize <?= isset($page) && empty($page) ? 'active' : '' ; ?>" href="?page=products"><i class="fa fa-circle-o fa-fw"></i>&nbsp;&nbsp;list product</a></li>
+                    <li><a class="text-capitalize <?= isset($page) && empty($page) ? 'active' : '' ; ?>" href="?page=categories"><i class="fa fa-circle-o fa-fw"></i>&nbsp;kategori</a></li>
                 </ul>
             </li>
             <li>
                 <a href="?page=suppliers" class="<?= isset($page) && empty($page) ? 'active' : '' ; ?>"><i class="fa fa-truck fa-fw"></i>&nbsp;Supplier</a>
             </li>
             <li>
-                <a class="btn btn-link text-muted disabled text-uppercase" style="background-color: #fff; font-size: 11px; letter-spacing: 1px; text-align: left !important;"><strong>Transaction</strong></a>
+                <a class="btn btn-link text-muted disabled text-uppercase" style="background-color: rgb(19,16,32); font-size: 11px; letter-spacing: 1px; text-align: left !important;"><strong>Transaction</strong></a>
             </li>
             <li>
                 <a href="?page=penjualan" class="<?= isset($page) && empty($page) ? 'active' : '' ; ?>"><i class="fa fa-line-chart fa-fw"></i>&nbsp;Penjualan</a>
@@ -43,7 +43,7 @@
                 <a href="?page=pembelian" class="<?= isset($page) && empty($page) ? 'active' : '' ; ?>"><i class="fa fa-shopping-cart fa-fw"></i>&nbsp;Pembelian</a>
             </li>
             <li>
-                <a class="btn btn-link text-muted disabled text-uppercase" style="background-color: #fff; font-size: 11px; letter-spacing: 1px; text-align: left !important;"><strong>Employee</strong></a>
+                <a class="btn btn-link text-muted disabled text-uppercase" style="background-color: rgb(19,16,32); font-size: 11px; letter-spacing: 1px; text-align: left !important;"><strong>Employee</strong></a>
             </li>
             <li>
                 <a href="?page=list-users" class="<?= isset($page) && empty($page) ? 'active' : '' ; ?>"><i class="fa fa-users fa-fw"></i>&nbsp;Karyawan</a>

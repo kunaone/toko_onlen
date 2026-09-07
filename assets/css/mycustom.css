@@ -1,0 +1,38 @@
+#wrapper{
+	position: relative;
+}
+aside,
+.page-wrapper{
+	height: 100%;
+}
+.mysidebar,
+.mynavbar{
+	background-color: rgb(36,39,58);
+}
+.mynavbar{
+	border-bottom: solid 2px rgb(46,50,74);
+}
+.navbar-brand{
+	color: #fff;
+}
+.mysidebar ul li{
+	border: none;
+	color: #ddd;
+}
+.mysidebar ul li a{
+	color: #ddd;
+}
+.mysidebar ul li a:hover,
+.mysidebar .nav>li>a:focus,
+.mysidebar ul li a.active,
+.mynavbar .dropdown a:focus,
+.mynavbar .dropdown a:hover
+{
+	background-color: rgb(46, 50, 74);
+}
+.mynavbar .burger-menu .icon-bar{
+	border-bottom: solid 2px #fff;
+}
+.mynavbar .custom-right-dropdown .dropdown-menu li a:hover{
+	background-color: #ddd !important;
+	color: rgb(46, 50, 74);

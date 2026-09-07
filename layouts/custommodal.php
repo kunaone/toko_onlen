@@ -85,33 +85,50 @@ if($page == 'register'){
 
 <script>
 $(document).ready(function() {
-
     $('#btnAddProd').click(function() {
 
         <?php if ($category_count == 0) { ?>
 
-            $('#categoryWarning').modal('show');
+        $('#categoryWarning').modal('show');
 
         <?php } else { ?>
 
-            $('#addProd').modal('show');
+        $('#addProd').modal('show');
 
         <?php } ?>
-
     });
+});
+</script>
+
+<script>
+$('#delProduct').on('show.bs.modal', function (event) {
+
+    var button = $(event.relatedTarget);
+
+    var id = button.data('id');
+    var code = button.data('code');
+
+    $('#delete_id').val(id);
+
+    $('#delete_msg').text(
+        'Apakah anda ingin menghapus produk ' + code + '?'
+    );
 
 });
 </script>
 
-<?php if ($has_errors) { ?>
-<script type="text/javascript">
+    <!-- kalo error modal tetep di show -->
+    <?php if ($has_errors) { ?>
+
+    <script type="text/javascript">
     $(document).ready(function () {
         $('#addProd').modal('show');
     });
-</script>
-<?php } ?>
+    </script>
 
-<?php } ?>
+    <?php } ?>
+
+<?php } ?>  <!-- endif page == 'product' -->
 
 <!-- halaman categories -->
 

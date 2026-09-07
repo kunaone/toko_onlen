@@ -4,6 +4,9 @@ switch ($page) {
 	case "products":
 		include_once "./pages/products/view-product.php";
 		break;
+	case "edit-product":
+		include_once "./pages/products/view-edit-product.php";
+		break;
 	case "categories":
 		include_once "./pages/view-category.php";
 		break;

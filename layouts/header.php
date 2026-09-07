@@ -14,6 +14,7 @@
         <!-- <link href="./assets/css/metisMenu.min.css" rel="stylesheet"> -->
         <!-- <link href="./assets/css/timeline.css" rel="stylesheet"> -->
         <link href="./assets/css/startmin.css" rel="stylesheet">
+        <link href="./assets/css/mycustom.css" rel="stylesheet">
         <!-- <link href="./assets/css/morris.css" rel="stylesheet"> -->
         <link href="./assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 

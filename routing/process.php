@@ -17,12 +17,20 @@ if($page == 'categories'){
 
 if($page == 'products'){
 
+    // view & model
     if(isset($_POST['add_product'])) {
+        include_once "./process/products/upload_file_img.php";
         include_once "./process/products/add_product.php";
     }
 
+    // view edit
     if(isset($_POST['edit_product'])) {
         include_once "./process/products/edit_product.php";
+    }
+
+    if (isset($_POST['update_product'])) {
+        include_once "./process/products/upload_file_img.php";
+        include_once "./process/products/update_product.php";
     }
 
     if(isset($_POST['delete_product'])) {

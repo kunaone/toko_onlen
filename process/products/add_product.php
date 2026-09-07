@@ -91,7 +91,10 @@ if (isset($_POST['add_product'])) {
         mysqli_stmt_close($check_code);
     }
 
+
+
     /* Simpan jika semua validasi lolos */
+    
     if (empty($errors)) {
 
         /*
@@ -100,8 +103,8 @@ if (isset($_POST['add_product'])) {
          */
 
         $sql = "INSERT INTO products
-                (prod_code, name, category_id, selling_price, qty, satuan, created_at)
-                VALUES (?, ?, ?, ?, ?, ?, NOW())";
+                (prod_code, name, category_id, selling_price, qty, satuan, img_prod, created_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, NOW())";
 
         $stmt = mysqli_prepare($conn, $sql);
 
@@ -111,13 +114,14 @@ if (isset($_POST['add_product'])) {
 
         mysqli_stmt_bind_param(
             $stmt,
-            "ssidis",
+            "ssidiss",
             $code_prod,
             $prod_name,
             $category_id,
             $selling_price,
             $stok,
-            $satuan
+            $satuan,
+            $image_name
         );
 
         if (mysqli_stmt_execute($stmt)) {
