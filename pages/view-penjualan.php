@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div style="margin-bottom: 16px;" class="col-lg-12">
-                <h1 class="page-header">Data Penjualan</h1>
+                <h1 class="page-header">Barang Keluar</h1>
                 <a style="font-size: 16px;" href="?page=home"><span class="glyphicon glyphicon-circle-arrow-left"></span>&nbsp;&nbsp;Kembali</a>
             </div>
             <!-- /.col-lg-12 -->

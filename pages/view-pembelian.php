@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div style="margin-bottom: 16px;" class="col-lg-12">
-                <h1 class="page-header">Data Pembelian</h1>
+                <h1 class="page-header">Barang Masuk</h1>
                 <a style="font-size: 16px;" href="?page=home"><span class="glyphicon glyphicon-circle-arrow-left"></span>&nbsp;&nbsp;Kembali</a>
             </div>
             <!-- /.col-lg-12 -->
@@ -28,7 +28,7 @@
             					<tbody>
             						<tr>
             							<td>1</td>
-                                        <td>PUR-001</td> <!-- purchasing -->
+                                        <td>tst-001</td> <!-- purchasing -->
             							<td>27-08-2026</td>
             							<td>PT. Sumber Makmur</td>
             							<td>Rp 800.000</td>

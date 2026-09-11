@@ -69,7 +69,7 @@ $category_query = mysqli_query($conn, "SELECT id, name FROM categories ORDER BY 
 	            <div class="col-md-offset-4"></div>
 	          </div>
 			
-			  <!-- purchase price -->
+					  <!-- purchase price -->
 	          <div class="form-group">
 	            <label for="buy_price">Harga Beli</label>
 	            <div class="input-group">
@@ -78,8 +78,8 @@ $category_query = mysqli_query($conn, "SELECT id, name FROM categories ORDER BY 
 	            </div>
 	          </div>
 
-				<!-- selling price -->
-				<div class="form-group">
+						<!-- selling price -->
+						<div class="form-group">
 	            <label for="sell_price">Harga Jual</label>
 	            <div class="input-group">
 	            	<span class="input-group-addon"><strong>Rp.</strong></span>

@@ -1,7 +1,5 @@
 <?php
 
-$image_name = null;
-
 if (isset($_FILES['img_prod']) && $_FILES['img_prod']['error'] != UPLOAD_ERR_NO_FILE) {
 
     $image = $_FILES['img_prod'];

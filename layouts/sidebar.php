@@ -49,6 +49,12 @@
                 <a href="?page=list-users" class="<?= isset($page) && empty($page) ? 'active' : '' ; ?>"><i class="fa fa-users fa-fw"></i>&nbsp;Karyawan</a>
             </li>
             <li>
+                <a class="btn btn-link text-muted disabled text-uppercase" style="background-color: rgb(19,16,32); font-size: 11px; letter-spacing: 1px; text-align: left !important;"><strong>Settings</strong></a>
+            </li>
+            <li>
+                <a href="#" class="<?= isset($page) && empty($page) ? 'active' : '' ; ?>"><i class="fa fa-cogs fa-fw"></i>&nbsp;Toko Profile</a>
+            </li>
+            <li>
                 <a href="?page=list-users" class="<?= isset($page) && empty($page) ? 'active' : '' ; ?>"><i class="fa fa-unlock-alt fa-fw"></i>&nbsp;Akun</a>
             </li>
         </ul>

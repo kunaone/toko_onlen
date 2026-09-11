@@ -41,9 +41,24 @@ $has_errors = isset($errors) && !empty($errors);
       <div class="col-lg-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <button class="btn btn-primary" data-toggle="modal" id="btnAddProd">
-              <span class="fa fa-plus"></span>&nbsp;&nbsp;Add New
-            </button>
+            <div class="clearfix">
+              <button class="btn btn-primary pull-left" data-toggle="modal" id="btnAddProd">
+                <span class="fa fa-plus"></span>&nbsp;&nbsp;Add New
+              </button>
+              
+              <div class="pull-right">
+                <div class="input-group" style="display: inline-table; width: 200px;">
+                  <input type="text" class="form-control" placeholder="Search...">
+                  <span class="input-group-btn">
+                      <button type="button" class="btn btn-primary">
+                          Search
+                      </button>
+                  </span>
+                </div> <!-- /.search -->
+
+              </div> <!-- /.pull-right  -->
+            </div> <!-- /.clearfix -->
+
           </div>
 
           <div class="panel-body">
@@ -117,11 +132,11 @@ $has_errors = isset($errors) && !empty($errors);
 
                       <td>
                           <!-- Edit/Delete dikerjakan nanti -->
-                          <button type="button" class="btn btn-info btn-xs" title="View">
+                          <button type="button" class="btn btn-info btn-xs" title="View" data-toggle="modal" data-target="#detailProduct" data-id="<?= htmlspecialchars($prod_id) ?>">
                               <span class="glyphicon glyphicon-eye-open"></span>
                           </button>
 
-                          <button type="button" class="btn btn-warning btn-xs btn-edit-product" title="Edit"  onclick="window.location.href='?page=edit-product&id=<?= $prod_id ?>'">
+                          <button type="button" class="btn btn-warning btn-xs btn-edit-product" title="Edit" onclick="window.location.href='?page=edit-product&id=<?= $prod_id ?>'">
                               <span class="glyphicon glyphicon-edit"></span>
                           </button>
 
@@ -147,7 +162,13 @@ $has_errors = isset($errors) && !empty($errors);
   </div> <!-- /.container-fluid -->
 </div> <!-- /.page-wrapper -->
 
-<?php include_once "./pages/products/add-modal-product.php" ?>
+<?php 
+
+include_once "./pages/products/add-modal-product.php";
+include_once "./pages/products/detail-modal-product.php";
+include_once "./pages/products/edit-modal-product.php";
+
+?>
 
 
 <!-- modal warning kategori -->
@@ -199,4 +220,5 @@ $has_errors = isset($errors) && !empty($errors);
     
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
-</div>
+</div><!-- /.modal -->
+
